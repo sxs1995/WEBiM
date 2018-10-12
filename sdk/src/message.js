@@ -61,8 +61,8 @@ var CryptoJS = require('crypto-js');
     Message.txt.prototype.set = function (opt) {
         this.value = opt.msg;
         this.body = {
-            id: this.id,
-            msgFrom:opt.msgFrom
+            id: this.id
+            , msgFrom:opt.msgFrom
             , to: opt.to
             , msg: this.value
             , type: this.type
@@ -131,6 +131,7 @@ var CryptoJS = require('crypto-js');
         opt.file = opt.file || _utils.getFileUrl(opt.fileInputId);
 
         this.value = opt.file;
+
         this.body = {
             id: this.id,
             file: this.value,
@@ -253,8 +254,8 @@ var CryptoJS = require('crypto-js');
             var dom;
             var json = {
                 from: conn.context.userId || ''
-                , to: message.to
                 , msgFrom: conn.context.userId || ''
+                , to: message.to
                 , bodies: [message.body]
                 , ext: message.ext || {}
             };
@@ -322,7 +323,7 @@ var CryptoJS = require('crypto-js');
                 if (data.entities[0]['file-metadata']) {
                     var file_len = data.entities[0]['file-metadata']['content-length'];
                     // me.msg.file_length = file_len;
-                    // me.msg.filetype = data.entities[0]['file-metadata']['content-type'];
+                    me.msg.filetype = data.entities[0]['file-metadata']['content-type'];
                     if (file_len > 204800) {
                         me.msg.thumbnail = true;
                     }
@@ -340,10 +341,10 @@ var CryptoJS = require('crypto-js');
                     }
                     , length: me.msg.length || 0
                     , file_length: me.msg.ext.file_length || 0
-                    // , filetype: me.msg.filetype
+                    , filetype: me.msg.filetype
                 }
-                console.log(conn.context)
                 me.msg.from = conn.context.userId;
+                me.msg.ext.nickName=Demo.companyName;
                 $.ajax({
                     url:WebIM.config.Base_url+'/jntechnician/chatMessages/addMsg',
                     type:'post',
@@ -373,9 +374,11 @@ var CryptoJS = require('crypto-js');
                 me.msg.body.lat = me.msg.lat;
                 me.msg.body.lng = me.msg.lng;
             }
+
             _send(me.msg);
         }
-    }; 
+    };
+
     exports._msg = _Message;
     exports.message = Message;
 }());

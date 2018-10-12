@@ -22,8 +22,8 @@ module.exports = React.createClass({
 
     onscroll: function () {
         var scrollTop = this.refs.contactContainer.scrollTop;
-        // var scollTopNum = scrollTop / 60;
-        // Demo.scroll[Demo.selectedCate] = scrollTop;
+        var scollTopNum = scrollTop / 60;
+        Demo.scroll[Demo.selectedCate] = scrollTop;
         Demo.chatState[Demo.selectedCate].scroll = scrollTop;
         if ((scrollTop / 60 + 10) == this.props[Demo.selectedCate].length) {
             this.props.getChatroom();
@@ -42,13 +42,12 @@ module.exports = React.createClass({
             g = [],
             s = [],
             c = [];
-
         for (var i = 0; i < this.props.friends.length; i++) {
             if (this.props.friends[i].name in this.props.blacklist) {
                 continue;
             }
             f.push(<Item id={this.props.friends[i].name} cate='friends' key={this.props.friends[i].name} username={this.props.friends[i].name}
-                         update={this.update} cur={this.props.curNode} brief={this.getBrief(this.props.friends[i].name)}/>);
+                realname={this.props.friends[i].realname} update={this.update} cur={this.props.curNode} brief={this.getBrief(this.props.friends[i].name)}/>);
         }
 
         for (var i = 0; i < this.props.groups.length; i++) {

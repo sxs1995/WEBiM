@@ -179,7 +179,7 @@ exports.Chinese = {
     inviteToGroup: '%s邀请您进群',
     inviteGroup: '您邀请了%s进群',
     createGroupSuc: '已成功创建群组%s',
-    logoutSuc: '您已下线',
+    logoutSuc: '您已下线,请重新登陆',
     onMuted: '您已被禁言',
     search: '搜索',
     join: '加入群组',

@@ -170,7 +170,7 @@ module.exports = React.createClass({
         }
         return (<div>
                 <i ref='switch'
-                   className='webim-operations-icon font xsmaller 2'
+                   className='webim-operations-icon font xsmaller'
                    onClick={this.update}>
                     M</i>
                 <ul

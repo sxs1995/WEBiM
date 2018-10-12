@@ -16,7 +16,7 @@ WebIM.config = {
     /*
      * Backend REST API URL
      */
-    apiURL: (location.protocol === 'https:' ? 'https:' : 'http:') + '//a1.easemob.com',
+    apiURL: (location.protocol   === 'https:' ? 'https:' : 'http:') + '//a1.easemob.com',
     /*
      * Application AppKey
      */
@@ -26,22 +26,21 @@ WebIM.config = {
     /*
      * Whether to use wss
      * @parameter {Boolean} true or false
-     */
+     */ 
     https: false,
     /*
      * isMultiLoginSessions
      * true: A visitor can sign in to multiple webpages and receive messages at all the webpages.
      * false: A visitor can sign in to only one webpage and receive messages at the webpage.
      */
-    isMultiLoginSessions: true,
+    isMultiLoginSessions: false,
     /*
      * set presence after login
      */
-
+    
     isAutoLogin: true,
     autoSignIn:true,
     autoSignInName:getQueryString('companyId'),
-
     autoSignInPwd:'smct123',
     /**
      * Whether to use window.doQuery()

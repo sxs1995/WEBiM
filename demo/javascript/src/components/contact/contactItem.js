@@ -20,12 +20,11 @@ module.exports = React.createClass({
     handleCurCateIconCount: function (count) {
         var curCate = document.getElementById(this.props.cate).getElementsByTagName('i')[1];
         var curCateCount = curCate.getAttribute('data-count') / 1;
-        console.log(curCateCount)
         curCateCount -= count;
         curCateCount = Math.max(0, curCateCount);
 
         if (curCateCount > 0) {
-            curCate.style.display = 'none';
+            curCate.style.display = 'block';
         } else {
             curCateCount = 0;
             curCate.style.display = 'none';
@@ -36,6 +35,7 @@ module.exports = React.createClass({
 
     update: function () {
         Demo.chatingCate = Demo.selectedCate;
+
         if (this.refs['i']) {
             var count = this.refs['i'].getAttribute('data-count') / 1;
             this.handleCurCateIconCount(count);
@@ -112,6 +112,7 @@ module.exports = React.createClass({
 
             }
         }
+
         this.props.update(Demo.selected);
     },
 
@@ -122,7 +123,7 @@ module.exports = React.createClass({
             <div id={this.props.id} className={'webim-contact-item' + className} onClick={this.update}>
                 <Avatar src={this.props.src}/>
                 <div className="webim-contact-info">
-                    <span className="webim-contact-username">{this.props.username}</span>
+                    <span className="webim-contact-username">{this.props.realname}</span>
                 </div>
                 <em dangerouslySetInnerHTML={{__html: this.props.brief}}></em>
                 <i ref='i' className='webim-msg-prompt'

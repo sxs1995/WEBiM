@@ -91,6 +91,7 @@ module.exports = React.createClass({
         } else if (chatroom) {
             msg.setGroup(Demo.groupType);
         }
+
         this.props.send(msg.body);
     },
 
@@ -160,10 +161,10 @@ module.exports = React.createClass({
                               onClick={this.showEmoji}>J</span>);
         roomMember.push(<span key={keyValue++} className='webim-picture-icon font smaller'
                               onClick={this.sendPicture}>K</span>);
-        roomMember.push(<span key={keyValue++} className='webim-audio-icon font smaller'
-                              onClick={this.sendAudio}>R</span>);
-        roomMember.push(<span key={keyValue++} className='webim-file-icon font smaller'
-                              onClick={this.sendFile}>S</span>);
+        // roomMember.push(<span key={keyValue++} className='webim-audio-icon font smaller'
+        //                       onClick={this.sendAudio}>R</span>);
+        // roomMember.push(<span key={keyValue++} className='webim-file-icon font smaller'
+        //                       onClick={this.sendFile}>S</span>);
         // if (WebIM.config.isWebRTC && Demo.selectedCate == 'friends') {
         //     roomMember.push(<span key={keyValue++} className='webim-audio-icon font smaller'
         //                           onClick={this.callVideo}>a</span>);

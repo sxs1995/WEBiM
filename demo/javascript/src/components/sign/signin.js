@@ -53,9 +53,8 @@ module.exports = React.createClass({
             },
             error: function () {
                 window.location.href = '#'
-
             }
-        };
+        }
 
         if (!type) {
             delete options.accessToken;
@@ -129,8 +128,8 @@ module.exports = React.createClass({
         return (
             <div className={this.props.show ? 'webim-sign' : 'webim-sign hide'}>
                 <h2>{Demo.lan.signIn}</h2>
-                <Input placeholder={Demo.lan.username} defaultFocus='true' ref='name' keydown={this.keyDown}/>
-                <Input placeholder={Demo.lan.password} ref='auth' type='password' keydown={this.keyDown}/>
+                <Input placeholder={Demo.lan.username} defaultFocus='true' ref='name' keydown={this.keyDown} value={WebIM.config.autoSignInName}/>
+                <Input placeholder={Demo.lan.password} ref='auth' keydown={this.keyDown} value={WebIM.config.autoSignInPwd}/>
                 <div className={WebIM.config.isWindowSDK ? 'hide' : ''}>
                     <Checkbox text={Demo.lan.tokenSignin} ref='token'/>
                 </div>

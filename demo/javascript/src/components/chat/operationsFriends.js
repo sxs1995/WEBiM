@@ -106,7 +106,7 @@ module.exports = React.createClass({
 
         return (
             <div>
-                {/* <i ref='switch' className='webim-operations-icon font xsmaller 1' onClick={this.update}>M</i> */}
+                <i ref='switch' className='webim-operations-icon font xsmaller' onClick={this.update}>M</i>
                 <ul tabIndex="-1" ref="webim-operations"
                     className={'webim-operations ' + (this.state.hide ? 'hide' : '')}
                     onBlur={this.handleOnBlur}>

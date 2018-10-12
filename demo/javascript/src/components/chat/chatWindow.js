@@ -407,14 +407,25 @@ module.exports = React.createClass({
         };
         Demo.conn.removeSingleGroupMember(options);
     },
-
+    timeFormat:function (s) {
+        return s < 10 ? '0' + s: s;
+    },
     send: function (msg) {
+        var mydate = new Date();
+        var onedate = mydate.toLocaleString('chinese', { hour12: false });
+        var getMonths = mydate.getMonth()+1;
+        var onedate2 = mydate.getFullYear() + '-' +this.timeFormat(getMonths) +'-'+this.timeFormat(mydate.getDate()) + ' '+onedate.split(' ')[1]
+        msg.fromName = Demo.companyName;
+        console.log(msg)
+        msg.ext.nickName=Demo.companyName;
+        msg.delay = onedate2;
         msg.chatType = this.props.chatType;
         Demo.conn.send(msg);
+        // 保存消息到数据库
         $.ajax({
             url:WebIM.config.Base_url+'/jntechnician/chatMessages/addMsg',
             type:'post',
-            async: false,
+            // async: false,
             contentType: "application/json",
             dataType: "json",
             data:JSON.stringify({
@@ -426,9 +437,10 @@ module.exports = React.createClass({
                 ext:{
                     weichat:{
                         originType:'webim'
-                    }
+                    },
+                    nickName:Demo.companyName
                 },
-                from:msg.msgFrom,
+                from:Demo.conn.context.userId,
                 id:msg.id,
                 msg:msg.msg,
                 to:msg.to,
@@ -439,7 +451,7 @@ module.exports = React.createClass({
                 console.log(res)
             }
         })
-        
+
         Demo.api.addToChatRecord(msg, 'txt', 'Undelivered');
         Demo.api.appendMsg(msg, 'txt');
     },
@@ -577,19 +589,19 @@ module.exports = React.createClass({
 
         var operations = [];
         if (Demo.selectedCate == 'friends') {
-            operations.push(<OperationsFriends
-                key='operation_div'
-                ref='operation_div'
-                roomId={this.props.roomId}
-                admin={this.state.admin}
-                owner={this.state.owner}
-                settings={this.state.settings}
-                getGroupInfo={this.getGroupInfo}
-                onBlur={this.handleOnBlur}
-                name={this.props.name}
-                updateNode={this.props.updateNode}
-                delFriend={this.props.delFriend}
-            />);
+            // operations.push(<OperationsFriends
+            //     key='operation_div'
+            //     ref='operation_div'
+            //     roomId={this.props.roomId}
+            //     admin={this.state.admin}
+            //     owner={this.state.owner}
+            //     settings={this.state.settings}
+            //     getGroupInfo={this.getGroupInfo}
+            //     onBlur={this.handleOnBlur}
+            //     name={this.props.name}
+            //     updateNode={this.props.updateNode}
+            //     delFriend={this.props.delFriend}
+            // />);
         } else if (Demo.selectedCate == 'groups') {
             operations.push(<OperationsGroups
                 key='operation_div'

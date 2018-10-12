@@ -18,7 +18,7 @@ var LocMsg = React.createClass({
                         <p className='webim-msg-header'>Location</p>
                         <div>
                             <span className='webim-msg-header-icon font small'>U</span>
-                            <span title={this.props.value} style={{lineHeight: '40px'}}
+                            <span title={this.props.value} style={{lineHeight: '24px'}}
                                   className='webim-msg-name'>{this.props.value}</span>
                         </div>
                     </div>

@@ -109,7 +109,7 @@ module.exports = function (options, sentByMe) {
         name: options.name,
         length: options.length || '',
         id: options.id,
-        
+
         error: options.error,
         errorText: options.errorText
     };

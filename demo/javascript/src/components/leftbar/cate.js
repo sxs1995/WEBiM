@@ -20,8 +20,6 @@ module.exports = React.createClass({
         var count = dom.getAttribute('data-count');
         if(count == 0){
             dom.style.display = 'none';
-        }else{
-            dom.style.display = 'none';
         }
         this.props.update();
     },
